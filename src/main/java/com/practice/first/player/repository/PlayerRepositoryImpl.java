@@ -33,10 +33,10 @@ public class PlayerRepositoryImpl implements PlayerRepository {
 
         List<Player> gamePlayerList = new ArrayList<>();
 
-        int playerIndex1 = (int)(Math.random() * 10) % lengthOfPlayerList;
-        int playerIndex2 = (int)(Math.random() * 10) % lengthOfPlayerList;
+        int playerIndex1 = (int)(Math.random() * lengthOfPlayerList) % lengthOfPlayerList;
+        int playerIndex2 = (int)(Math.random() * lengthOfPlayerList) % lengthOfPlayerList;
         while (playerIndex2 != playerIndex1) {
-            playerIndex2 = (int)(Math.random() * 10) % lengthOfPlayerList;
+            playerIndex2 = (int)(Math.random() * lengthOfPlayerList) % lengthOfPlayerList;
         }
 
         Player player1 = playerList.get(playerIndex1);

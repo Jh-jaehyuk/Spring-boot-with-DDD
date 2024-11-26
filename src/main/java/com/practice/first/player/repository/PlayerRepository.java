@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface PlayerRepository {
     Player create();
+    List<Player> getPlayerList();
     List<Player> selectTwoPlayers();
 }

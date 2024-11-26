@@ -16,11 +16,16 @@ public class PlayerRepositoryImpl implements PlayerRepository {
     @Override
     public Player create() {
         String nickname = playerNickname + ++playerCount;
-        Player player = new Player(nickname, 0);
+        Player player = new Player(nickname);
 
         playerList.add(player);
 
         return player;
+    }
+
+    @Override
+    public List<Player> getPlayerList() {
+        return playerList;
     }
 
     @Override
@@ -35,7 +40,7 @@ public class PlayerRepositoryImpl implements PlayerRepository {
 
         int playerIndex1 = (int)(Math.random() * lengthOfPlayerList) % lengthOfPlayerList;
         int playerIndex2 = (int)(Math.random() * lengthOfPlayerList) % lengthOfPlayerList;
-        while (playerIndex2 != playerIndex1) {
+        while (playerIndex2 == playerIndex1) {
             playerIndex2 = (int)(Math.random() * lengthOfPlayerList) % lengthOfPlayerList;
         }
 

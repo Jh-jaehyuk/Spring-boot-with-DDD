@@ -1,18 +1,20 @@
-package com.example.demo.dice.service;
+package com.practice.second.dice.service;
 
-import com.example.demo.dice.entity.Dice;
-import com.example.demo.dice.repository.DiceRepository;
+import com.practice.second.dice.entity.Dice;
+import com.practice.second.dice.repository.DiceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class DiceServiceImpl implements DiceService {
-    final private DiceRepository diceRepository;
+    private final DiceRepository diceRepository;
 
     @Override
     public Dice rollDice() {
-        long randomNumber = (long)(Math.random() * 6) + 1;
+        final int MIN = 1;
+        final int MAX = 6;
+        long randomNumber = (long)(Math.random() * MAX) + MIN;
 
         Dice dice = new Dice(randomNumber);
         Dice createdDice = diceRepository.save(dice);

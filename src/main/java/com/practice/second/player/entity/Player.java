@@ -1,4 +1,4 @@
-package com.example.demo.player.entity;
+package com.practice.second.player.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,10 +17,16 @@ public class Player {
     private int id;
 
     private String nickname;
+    private List<Long> diceIdList;
 
     public Player(String nickname) {
         this.nickname = nickname;
+        this.diceIdList = new ArrayList<>();
     }
 
-    public Player() { }
+    public void addDiceId(Long diceId) {
+        this.diceIdList.add(diceId);
+    }
+
+    public Player() {}
 }

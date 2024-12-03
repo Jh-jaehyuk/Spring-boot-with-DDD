@@ -31,13 +31,14 @@ public class GameServiceImpl implements GameService {
     final int DRAW = -1;
 
     @Override
-    @Transactional
+//    @Transactional
     public CreateSimpleGameResponse createSimpleGame() {
         List<Player> playerList = playerRepository.findAll();
         List<Long> playerIdList = new ArrayList<>();
 
         for (Player player: playerList) {
             System.out.println("player: " + player);
+            player.clearDiceIdList();
             for (int i = 0; i < 3; i++) {
                 long randomNumber = (long)(Math.random() * 6) + 1;
 

@@ -14,8 +14,10 @@ import com.practice.second.player.entity.Player;
 import com.practice.second.player.repository.PlayerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,17 +31,20 @@ public class GameServiceImpl implements GameService {
     final int DRAW = -1;
 
     @Override
+    @Transactional
     public CreateSimpleGameResponse createSimpleGame() {
         List<Player> playerList = playerRepository.findAll();
         List<Long> playerIdList = new ArrayList<>();
 
         for (Player player: playerList) {
+            System.out.println("player: " + player);
             for (int i = 0; i < 3; i++) {
                 long randomNumber = (long)(Math.random() * 6) + 1;
 
                 Dice dice = new Dice(randomNumber);
                 Dice createdDice = diceRepository.save(dice);
                 player.addDiceId(createdDice.getNumber());
+                playerRepository.save(player);
             }
 
             playerIdList.add((long)player.getId());
@@ -57,8 +62,10 @@ public class GameServiceImpl implements GameService {
         List<Player> potentialWinners = new ArrayList<>();
 
         for (Player player: playerList) {
+            List<Long> diceList = player.getDiceIdList();
+            System.out.println("player diceList: " + Arrays.toString(diceList.toArray()));
             int diceSum = calculateDiceSum(player);
-
+            System.out.println("player: " + player + " diceSum: " + diceSum);
             if (diceSum > highestSum) {
                 highestSum = diceSum;
                 potentialWinners.clear();
@@ -93,6 +100,7 @@ public class GameServiceImpl implements GameService {
 
         List<Player> playerList = playerRepository.findByIdIn(playerIdList);
         List<Player> potentialWinners = findPotentialWinners(playerList);
+        System.out.println("potentialWinners: " + Arrays.toString(potentialWinners.toArray()));
 
         if (potentialWinners.size() > 1) {
             game.setWinnerId(DRAW);

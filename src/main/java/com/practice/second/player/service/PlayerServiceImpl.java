@@ -52,6 +52,6 @@ public class PlayerServiceImpl implements PlayerService {
                     List<Dice> diceList = diceRepository.findByIdIn(player.getDiceIdList());
                     return PlayerListResponse.from(player, diceList);
                 })
-                .collect(Collectors.toList());
+                 .collect(Collectors.toList());
     }
 }

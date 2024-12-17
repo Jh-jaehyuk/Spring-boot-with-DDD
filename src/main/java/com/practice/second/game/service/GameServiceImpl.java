@@ -33,19 +33,19 @@ public class GameServiceImpl implements GameService {
     @Override
 //    @Transactional
     public CreateSimpleGameResponse createSimpleGame() {
-        List<Player> playerList = playerRepository.findAll();
+        List<Player> playerList = playerRepository.findAll(); // findAll() -> 모든 player 객체를 가져옴
         List<Long> playerIdList = new ArrayList<>();
 
         for (Player player: playerList) {
             System.out.println("player: " + player);
-            player.clearDiceIdList();
+            player.clearDiceIdList(); // 매 게임마다 새롭게 주사위 3번을 던지도록 주사위 목록 초기화
             for (int i = 0; i < 3; i++) {
-                long randomNumber = (long)(Math.random() * 6) + 1;
+                long randomNumber = (long)(Math.random() * 6) + 1; // 1 - 6 사이의 수가 랜덤으로 등장
 
-                Dice dice = new Dice(randomNumber);
-                Dice createdDice = diceRepository.save(dice);
-                player.addDiceId(createdDice.getNumber());
-                playerRepository.save(player);
+                Dice dice = new Dice(randomNumber); // 위에서 랜덤으로 생성한 숫자를 가지는 dice 객체 생성
+                Dice createdDice = diceRepository.save(dice); // 위에서 생성한 dice 객체를 DB에 저장 및 반환
+                player.addDiceId(createdDice.getNumber()); // 생성된 dice 객체의 숫자를 player의 diceIdList에 추가
+                player = playerRepository.save(player); // 변경된 diceIdList를 반영할 수 있도록 player 객체 저장
             }
 
             playerIdList.add((long)player.getId());

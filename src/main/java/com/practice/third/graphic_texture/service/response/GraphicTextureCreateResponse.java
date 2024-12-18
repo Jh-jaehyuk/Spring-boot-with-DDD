@@ -12,12 +12,9 @@ public class GraphicTextureCreateResponse {
     private final Long positionX;
     private final Long positionY;
 
-    public static GraphicTextureCreateResponse from(GraphicTexture graphicTexture) {
-        GraphicTextureName textureName = graphicTexture.getGraphicTextureName();
-        Long value = textureName.getValue();
-
+    public static GraphicTextureCreateResponse from(String name, GraphicTexture graphicTexture) {
         return new GraphicTextureCreateResponse(
-                GraphicTextureName.getNameByValue(value),
+                name,
                 graphicTexture.getPositionX(),
                 graphicTexture.getPositionY());
     }

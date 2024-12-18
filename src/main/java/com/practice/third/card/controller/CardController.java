@@ -2,6 +2,7 @@ package com.practice.third.card.controller;
 
 import com.practice.third.card.controller.request_form.CardCreateRequestForm;
 import com.practice.third.card.controller.response_form.CardCreateResponseForm;
+import com.practice.third.card.service.response.CardCreateResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;

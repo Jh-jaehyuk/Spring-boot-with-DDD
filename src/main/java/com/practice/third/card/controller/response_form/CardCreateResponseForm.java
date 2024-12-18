@@ -1,5 +1,6 @@
 package com.practice.third.card.controller.response_form;
 
+import com.practice.third.card.service.response.CardCreateResponse;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

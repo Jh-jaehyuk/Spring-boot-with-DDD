@@ -3,12 +3,12 @@ package com.practice.third.card.entity;
 import java.util.Objects;
 
 public enum CardName {
-    FIRE_DRAGON((long) 1),
-    ICE_WARRIOR((long) 2),
-    LIGHTNING_MAGE((long) 3),
-    SHADOW_ASSASSIN((long) 4),
-    EARTH_GIANT((long) 5),
-    WIND_RANGER((long) 6);
+    FIRE_DRAGON(1L),
+    ICE_WARRIOR(2L),
+    LIGHTNING_MAGE(3L),
+    SHADOW_ASSASSIN(4L),
+    EARTH_GIANT(5L),
+    WIND_RANGER(6L);
 
     private final Long value;
 
@@ -18,16 +18,6 @@ public enum CardName {
 
     public Long getValue() {
         return value;
-    }
-
-    public static CardName getCardNameByValue(Long value) {
-        for (CardName cardName: CardName.values()) {
-            if (Objects.equals(cardName.value, value)) {
-                return cardName;
-            }
-        }
-
-        return CardName.FIRE_DRAGON;
     }
 
     public static String getNameByValue(Long value) {
@@ -44,7 +34,7 @@ public enum CardName {
         try {
             return CardName.valueOf(name.toUpperCase()).value;
         } catch (IllegalArgumentException e) {
-            return (long) -1;
+            return -1L;
         }
     }
 }

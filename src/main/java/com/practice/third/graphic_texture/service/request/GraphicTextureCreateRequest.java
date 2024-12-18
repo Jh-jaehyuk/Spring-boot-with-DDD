@@ -11,12 +11,7 @@ public class GraphicTextureCreateRequest {
     private final Long graphicTextureKindsNumber;
     private final Long cardNumber;
 
-    public GraphicTexture toGraphicTexture(
-            GraphicTextureName graphicTextureName, Long positionX, Long positionY, Long cardNumber) {
-        return new GraphicTexture(
-                graphicTextureName,
-                positionX,
-                positionY,
-                cardNumber);
+    public GraphicTexture toGraphicTexture(Long positionX, Long positionY) {
+        return new GraphicTexture(positionX, positionY);
     }
 }

@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 public class CardCreateRequest {
     private final Long cardNumber;
 
-    public Card toCard(CardName cardName, CardPlacement placement, CardStatusEffect effect) {
-        return new Card(cardName, placement, effect);
+    public Card toCard(String name) {
+        return new Card(name, CardPlacement.HAND, CardStatusEffect.NORMAL);
     }
 }

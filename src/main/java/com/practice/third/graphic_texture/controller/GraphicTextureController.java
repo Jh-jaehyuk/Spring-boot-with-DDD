@@ -19,9 +19,9 @@ public class GraphicTextureController {
     private final GraphicTextureService graphicTextureService;
 
     @PostMapping("/create")
-    public GraphicTextureCreateResponseForm createGraphicTexture(
+    public GraphicTextureCreateResponseForm create(
             @RequestBody GraphicTextureCreateRequestForm graphicTextureCreateRequestForm) {
-        log.info("graphic texture controller -> createGraphicTexture() called!");
+        log.info("graphic texture controller -> create() called!");
 
         GraphicTextureCreateResponse response = graphicTextureService.create(
                 graphicTextureCreateRequestForm.toGraphicTextureCreateRequest());

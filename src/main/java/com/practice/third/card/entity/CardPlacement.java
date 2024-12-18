@@ -1,5 +1,6 @@
 package com.practice.third.card.entity;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public enum CardPlacement {
@@ -16,16 +17,6 @@ public enum CardPlacement {
 
     public Long getValue() {
         return value;
-    }
-
-    public static CardPlacement getCardPlacementByValue(Long value) {
-        for (CardPlacement placement: CardPlacement.values()) {
-            if (Objects.equals(placement.value, value)) {
-                return placement;
-            }
-        }
-
-        return CardPlacement.HAND;
     }
 
     public static String getNameByValue(Long value) {

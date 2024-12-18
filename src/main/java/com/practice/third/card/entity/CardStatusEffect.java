@@ -1,5 +1,6 @@
 package com.practice.third.card.entity;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public enum CardStatusEffect {
@@ -23,17 +24,6 @@ public enum CardStatusEffect {
     public Long getValue() {
         return value;
     }
-
-    public static CardStatusEffect getCardStatusEffectByValue(Long value) {
-        for (CardStatusEffect effect: CardStatusEffect.values()) {
-            if (Objects.equals(effect.value, value)) {
-                return effect;
-            }
-        }
-
-        return CardStatusEffect.NORMAL;
-    }
-
 
     public static String getNameByValue(Long value) {
         for (CardStatusEffect effect: CardStatusEffect.values()) {

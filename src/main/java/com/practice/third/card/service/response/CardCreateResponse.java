@@ -16,11 +16,16 @@ public class CardCreateResponse {
     private final Long hp;
 
     public static CardCreateResponse from(
-            Card card, CardName cardName, CardPlacement placement, CardStatusEffect effect,
-            CardHp cardHp, CardDamage damage) {
+            Card card, String cardName, CardPlacement placement, CardStatusEffect effect,
+            String textureName, CardHp cardHp, CardDamage damage) {
         return new CardCreateResponse(
                 card.getId(),
-                cardName.
-        )
+                cardName.getName(),
+                placement.getName(),
+                effect.getName(),
+                textureName,
+                damage.getDamage(),
+                cardHp.getHp()
+        );
     }
 }

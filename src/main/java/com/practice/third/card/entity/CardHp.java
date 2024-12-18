@@ -28,8 +28,4 @@ public class CardHp {
         this.graphicTexture = graphicTexture;
         this.card = card;
     }
-
-    public void setHp(Long damage) {
-        this.hp = (this.hp <= damage ? 0 : this.hp - damage);
-    }
 }
